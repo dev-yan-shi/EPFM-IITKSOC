@@ -1,0 +1,288 @@
+.form-style {
+    max-width: 500px;
+    padding: 10px 20px;
+    background: #222222;
+    margin: 10px auto;
+    padding: 20px;
+    background: #222222;
+    border-radius: 8px;
+    font-family: Georgia, "Raleway", Times, serif;
+    color: white;
+}
+
+.btn-info:active,
+.btn-info:focus,
+.btn-info:active:focus,
+.btn-info:active:hover,
+.btn-info:hover {
+    background: #E54363;
+}
+
+.emoji-buttons {
+    padding: 0px 6px 0px 6px;
+    background-color: #444444;
+    /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10%;
+    display: inline-block;
+}
+
+.emoji-buttons:hover,.emoji-buttons:active, .emoji-buttons:focus  {
+    background-color: #E54363;
+}
+
+.modal-header {
+    padding: 0px;
+    color: white;
+    background-color: #222222;
+
+}
+
+.modal-body {
+    position: relative;
+    padding: 0px;
+    background-color: #222222;
+}
+
+.modal-footer {
+    padding: 0px;
+    text-align: right;
+    background-color: #222222;
+}
+
+.modal-footer .btn+.btn {
+    margin-bottom: 0;
+    margin-left: 0px
+}
+
+.form-style fieldset {
+    border: none;
+}
+
+.form-style legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.form-style label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-style input[type="text"],
+.form-style input[type="date"],
+.form-style input[type="datetime"],
+.form-style input[type="email"],
+.form-style input[type="number"],
+.form-style input[type="search"],
+.form-style input[type="time"],
+.form-style input[type="url"],
+.form-style textarea,
+.form-style select {
+    font-family: Georgia, "Raleway", Times, serif;
+    background: rgba(255, 255, 255, .1);
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    margin: 0;
+    outline: 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #444444;
+    color: #8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    margin-bottom: 30px;
+}
+
+.form-style input[type="text"]:focus,
+.form-style input[type="date"]:focus,
+.form-style input[type="datetime"]:focus,
+.form-style input[type="email"]:focus,
+.form-style input[type="number"]:focus,
+.form-style input[type="search"]:focus,
+.form-style input[type="time"]:focus,
+.form-style input[type="url"]:focus,
+.form-style textarea:focus,
+.form-style select:focus {
+    background: #d2d9dd;
+}
+
+.form-style select {
+    -webkit-appearance: menulist-button;
+    height: 35px;
+}
+
+.form-style .number {
+    background: #E54363;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.form-style input[type="submit"],
+.form-style input[type="button"] {
+    position: relative;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #E54363;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #E54363;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+
+.form-style input[type="submit"]:hover,
+.form-style input[type="button"]:hover {
+    background: #E54363;
+}
+
+.slidecontainer {
+    width: 50%;
+    /* Width of the outside container */
+    padding: 10px;
+    position: absolute;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 50px;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #E54363;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #E54363;
+    cursor: pointer;
+}
+
+.close {
+    float: right;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2
+}
+
+.close:focus,
+.close:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5
+}
+
+button.close {
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.modal-title {
+    margin: 0;
+    float: left;
+    padding: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #222;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    outline: 0
+}
+
+.tooltip {
+    position: relative;
+    float:right;
+}
+
+.tooltiptext{
+    visibility: hidden;
+    width: 120px;
+    background-color: #E54363;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 0;
+    float:right;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip > .tooltip-inner {
+    background-color: #E54363; 
+    color: #FFFFFF; 
+    border: none; 
+    padding: 15px;
+    font-size: 14px;
+  }
+.tooltip.right > .tooltip-arrow {
+    border-right: 5px solid;
+    color: #E54363;
+  }
+a,a:hover{
+    color: white;
+}
+.modal{
+    height : 100%;
+}

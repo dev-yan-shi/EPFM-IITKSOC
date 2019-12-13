@@ -1,0 +1,200 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hamburger.css">
+    <title>Dashboard</title>
+    <script src="scripts/loader.js"></script>
+    <script src="scripts/charts.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="modal" id="modal-account-details" role="dialog" tabindex="-1" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+        style="position : fixed; margin : 0; width : auto; height : 100%; top:0; background : rgba(255,255,255,50%);">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title"><b>Account Details</b></h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-style">
+                        <div class="account-details" align="center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-account-details" role="dialog" tabindex="-1" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+        style="position : fixed; margin : 0; width : auto; height : 100%; top:0; background : rgba(255,255,255,50%);">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title"><b>Account Details</b></h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-style">
+                        <div class="account-details" align="center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="split-left left">
+            <div class="centered">
+                <div id="showSupName" class="employee-name-heading"></div>
+                <div class="designation">Employee</div>
+                <button type="submit" id="view-profile" class="btn btn-info four-button" data-toggle="modal"
+                    data-target="#modal-account-details">View Profile</button>
+                <br><br><br><br>
+                <button class="btn-info logout-button" id="log-out" onclick="logout()">Logout</button>
+            </div><br>
+            <div class="score-area">
+                <p>
+                    <center class="normal"><br>Your current feedback score is<br><br><br>
+                </p>
+                <center><b class="percentage"></b></center>
+            </div>
+        </div>
+        <div class="split-right right">
+            <nav role="navigation">
+                <div id="menuToggle">
+
+                    <input type="checkbox" />
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul id="menu">
+                        <div class="centered">
+                            <div id="showSupName2" class="employee-name-heading"></div>
+                            <div class="designation">Employee</div>
+                            <button type="submit" id="view-profile" class="btn btn-info four-button" data-toggle="modal"
+                                data-target="#modal-account-details">View Profile</button>
+                            <br><br><br><br>
+                            <button class="btn-info logout-button" id="log-out" onclick="logout()">Logout</button>
+                        </div><br>
+                        <div class="score-area">
+                            <p>
+                                <center class="normal"><br>Your current feedback score is<br><br><br>
+                            </p>
+                            <center><b class="percentage"></b></center>
+                        </div>
+                    </ul>
+
+                </div>
+            </nav>
+            <div class="tabs-centered">
+                <button id="mt-btn" class="tab" onclick="openTab(event, 'my-tasks-area')">MY TASKS</button>
+                <button id="nn-btn" class="tab" onclick="openTab(event, 'notification-area')">NOTIFICATIONS</button>
+                <button id="lb-btn" class="tab" onclick="openTab(event, 'leaderboard-area')">LEADERBOARD</button>
+            </div>
+            <br>
+            <div class="tab-panels">
+
+                <div id="my-tasks-area" class="center-area">
+                </div>
+                <div id="notification-area" class="center-area" name="employ-notification">
+                </div>
+                <div id="leaderboard-area" class="center-area">
+
+                </div>
+                <script>
+                    function openTab(evt, cityName) {
+                        var i, tabcontent, tablinks;
+                        tabcontent = document.getElementsByClassName("center-area");
+                        for (i = 0; i < tabcontent.length; i++) {
+                            tabcontent[i].style.display = "none";
+                        }
+                        tablinks = document.getElementsByClassName("tab");
+                        for (i = 0; i < tablinks.length; i++) {
+                            tablinks[i].className = tablinks[i].className.replace(" active", "");
+                        }
+                        document.getElementById(cityName).style.display = "block";
+                        evt.currentTarget.className += " active";
+                    }
+                    openTab(event, 'my-tasks-area');
+                    document.getElementById("mt-btn").click();
+                </script>
+            </div>
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#config-web-app -->
+
+            <script>
+                // Your web app's Firebase configuration
+                var firebaseConfig = {
+                    apiKey: "AIzaSyDH0kF0XmB_D-lDrjS8m8xgiZ7544_fzeQ",
+                    authDomain: "epfm-ym61.firebaseapp.com",
+                    databaseURL: "https://epfm-ym61.firebaseio.com",
+                    projectId: "epfm-ym61",
+                    storageBucket: "",
+                    messagingSenderId: "111715556404",
+                    appId: "1:111715556404:web:10332ac046ef434f"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+                //make auth and firestore references
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+                // const functions = firebase.functions();
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script src="scripts/auth.js"></script>
+            <script src="scripts/index.js"></script>
+            <script src="scripts/logSign.js"></script>
+            <script src="scripts/addtask2.js"></script>
+            <script src="scripts/employNotif.js"></script>
+            <script>
+                // Get the modal
+                var modal = document.getElementById('modal-account-details');
+
+                // // When the user clicks anywhere outside of the modal, close it
+                // window.onclick = function(event) {
+                //     if (event.target == modal) {
+                //     modal.style.display = "none";
+                //     }
+                // }
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $('#closeModal').click(function () {
+                        $('#modal-account-details').modal('hide');
+                    });
+                });
+            </script>
+        </div>
+
+    </div>
+</body>
+
+</html>

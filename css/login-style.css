@@ -1,0 +1,149 @@
+.home-page-intro{
+  font-family : Raleway;
+  font-size : 1vw;
+  color : #FFFFFF;
+  padding : 0vw 5vw;
+  width : 85%;
+  text-align: justify;
+  text-align-last: left;
+  line-height: 1.25vw;
+}
+.home-page-intro b{
+  font-size : 25px;
+  line-height : 40px;
+
+}
+.normal
+{
+  font-family : Raleway;
+  font-size : 16px;
+  letter-spacing : 1px;
+  color : #FFFFFF;
+}
+.welcome-text
+{
+    font-family : 'Roboto', sans-serif;
+    font-weight : 400;
+    font-size : 0.8vw;
+    letter-spacing : 0.1vw;
+    padding: 0vw; 
+    padding-left: 6.4vw;
+    padding-bottom: 4vw;
+    color :#FFFFFF;
+}
+
+.login-styles{
+  color : #444444;
+}
+.btn{
+  float: right;
+  background-color: #444444;
+  border-radius : 15px;
+  color : white;
+}
+.btn:hover,.btn:active,.btn:focus{
+  background-color: #E54363;
+}
+.welcome-touch
+{
+    font-family : 'Cookie', cursive;
+    padding : 0vw;
+    border : 0vw;
+    padding : 5vw;
+    font-size : 8vw;
+    letter-spacing : 0.1vw;
+    padding-bottom: 0vw;
+    line-height: 5.5vw;
+    margin: auto;
+    color :#FFFFFF;
+}
+.read-more
+{
+  background-image : url(read-more.png);
+  /*To create image referenced in CSS, use 'Export Selected CSS' command.*/
+  background-repeat : no-repeat;
+}
+.split-left{
+    height: 100%;
+    width: 66%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 2.5vw;
+  }
+  .split-right{
+    height: 100%;
+    width: 34%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 2.5vw;
+  }
+.left
+{   left : 0;
+    float:left;
+    background-image: linear-gradient(#C32141,#ED3A85);
+}
+.right
+{
+    right : 0;
+    float: right;
+  background : #222222;
+  background : rgba(34, 34, 34, 1);
+  padding: 15vw 0vw;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  } 
+.touch-text
+{
+  background-image : url(touch-text.png);
+  /*To create image referenced in CSS, use 'Export Selected CSS' command.*/
+  background-repeat : no-repeat;
+}
+.company-text
+{
+  background-image : url(company-text.png);
+  /*To create image referenced in CSS, use 'Export Selected CSS' command.*/
+  background-repeat : no-repeat;
+}
+.hidden{
+  display : none;
+}
+@media screen and (max-width:1150px) {
+  .hidden{
+    display : block;
+  }
+  .split-left, .left, .right {
+    background: #222222;
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+@media screen and (max-width:1500px) {
+
+
+  .welcome-touch{
+    font-size: 120px;
+    line-height: 96px;
+  }
+  .welcome-text{
+    font-size: 12px;
+  }
+
+}
+#more-text {
+  display: none;
+  }
+#myBtn{
+  float: left;
+  background-color: rgba(255,255,255,30%);
+  margin-left: 100px;
+  box-shadow: 0;
+}

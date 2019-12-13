@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hamburger.css">
+    <title>Dashboard</title>
+    <script src="scripts/loader.js"></script>
+    <script src="scripts/charts.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="modal" id="myModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+        style="position : fixed; margin : 0; width : auto; height : 100%; top:0; background : rgba(255,255,255,50%);">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title"><b>Feedback Form</b></h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-style">
+                        <form id='feedback-form'>
+                            <fieldset>
+                                <legend><span class="number">1</span>General</legend>
+                                Description of the goal to be achieved<br><br><br>
+                                
+                                <label>Actual Outcome</label>
+                                <textarea name="field3" placeholder="Data on Actual Outcome"></textarea>
+                                <label for="job">Status of Goal:</label>
+                                <select id="job" name="field4">
+                                    <optgroup label="Select the status of the employee's goal">
+                                        <option value="Accomplished">Accomplished</option>
+                                        <option value="Not Accomplished">Not Accomplished</option>
+                                        <option value="Disconnected">Disconnected</option>
+                                    </optgroup>
+                                </select id="">
+                                <label name="field5">Supervisor Reaction</label>
+                                <div id="my_styles">
+                                <button type="button" onclick="emoji(1)" class="emoji-buttons"
+                                    style="font-size:40px">&#128525;</button>
+                                <button type="button" onclick="emoji(2)" class="emoji-buttons"
+                                    style="font-size:40px">&#128515;</button>
+                                <button type="button" onclick="emoji(3)" class="emoji-buttons"
+                                    style="font-size:40px">&#128522;</button>
+                                <button type="button" onclick="emoji(4)" class="emoji-buttons"
+                                    style="font-size:40px">&#128528;</button>
+                                <button type="button" onclick="emoji(5)" class="emoji-buttons"
+                                    style="font-size:40px">&#128533;</button>
+                                    </div>
+                                    <script>
+                                jQuery("#my_styles .emoji-buttons").click(function(){
+                                    jQuery("#my_styles .emoji-buttons").attr("style","color : #444444; font-size:40px;");
+                                    jQuery(this).attr("style","color : #E54363; font-size:40px;"); 
+                                });
+                                </script>
+                                <br><br>
+                                <legend><span class="number">2</span> Feedback on Performance
+                                    Compentencies</legend>
+                                <div class="slidecontainer" id="Action">
+                                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="right"
+                                        data-html="true"
+                                        title="
+                                            1. Completeion of task with minimal supervision.<br>
+                                            2. Taking Ownership of things, assignments and activities.<br>
+                                            3. Does not make excuses for errors or problems, acknowledges and corrects mistakes.">
+                                        <b>A</b>ccountability<input type="range" min="1" max="5" value="3"
+                                            class="slider" id="myRange1" name="Action"></a><span id="demo1"></span>/5
+                                </div>
+                                <script>
+                                    var slider1 = document.getElementById("myRange1");
+                                    var output1 = document.getElementById("demo1");
+                                    output1.innerHTML = slider1
+                                        .value; // Display the default slider value
+
+                                    // Update the current slider value (each time you drag the slider handle)
+                                    slider1.oninput = function () {
+                                        output1.innerHTML = this.value;
+                                    }
+                                </script>
+                                <br><br><br>
+                                <div class="slidecontainer" id="aCtion">
+                                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="right"
+                                        data-html="true" title="
+                                            1. Positive Working Relationships<br>
+                                            2. Open and Transparent<br>
+                                            3. Ability to build rapport and trust with co-workers & patients.<br>
+                                            4. Consistently resolves unit/team problems and promotes improvements.">
+                                        <b>C</b>ollaboration<input type="range" min="1" max="10" value="6"
+                                            class="slider" id="myRange2" name="aCtion"></a><span id="demo2"></span>/10
+                                </div>
+                                <script>
+                                    var slider2 = document.getElementById("myRange2");
+                                    var output2 = document.getElementById("demo2");
+                                    output2.innerHTML = slider2
+                                        .value; // Display the default slider value
+
+                                    // Update the current slider value (each time you drag the slider handle)
+                                    slider2.oninput = function () {
+                                        output2.innerHTML = this.value;
+                                    }
+                                </script>
+                                <br><br><br>
+                                <div class="slidecontainer" id="acTion">
+                                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="right"
+                                        data-html="true" title="
+                                            1. Manages own time, prioritize and resources to achieve goals<br>
+                                            2. Good in planning work assignments">
+                                        <b>T</b>imeliness<input type="range" min="1" max="5" value="3" class="slider"
+                                            id="myRange3" name="acTion"></a><span id="demo3"></span>/5
+                                </div>
+                                <script>
+                                    var slider3 = document.getElementById("myRange3");
+                                    var output3 = document.getElementById("demo3");
+                                    output3.innerHTML = slider3
+                                        .value; // Display the default slider value
+
+                                    // Update the current slider value (each time you drag the slider handle)
+                                    slider3.oninput = function () {
+                                        output3.innerHTML = this.value;
+                                    }
+                                </script>
+                                <br><br><br>
+                                <div class="slidecontainer" id="actIon">
+                                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="right"
+                                        data-html="true"
+                                        title="
+                                            1. Always goes the extra mile.<br>
+                                            2. Suggest useful and valuable ideas that will enhance efficiencies and create value to our hospital standards.">
+                                        <b>I</b>nitiative<input type="range" min="1" max="10" value="6" class="slider"
+                                            id="myRange4" name="actIon"></a><span id="demo4"></span>/10
+                                </div>
+                                <script>
+                                    var slider4 = document.getElementById("myRange4");
+                                    var output4 = document.getElementById("demo4");
+                                    output4.innerHTML = slider4
+                                        .value; // Display the default slider value
+
+                                    // Update the current slider value (each time you drag the slider handle)
+                                    slider4.oninput = function () {
+                                        output4.innerHTML = this.value;
+                                    }
+                                </script>
+                                <br><br><br>
+                                <div class="slidecontainer" id="actiOn">
+                                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="right"
+                                        data-html="true" title="
+                                            1. Outcome Driven<br>
+                                            2. Understands what is expected out of him/her as per the goal.">
+                                        <b>O</b>bjectivity<input type="range" min="1" max="5" value="3" class="slider"
+                                            id="myRange5" name="actiOn"></a><span id="demo5"></span>/5
+                                </div>
+                                <script>
+                                    var slider5 = document.getElementById("myRange5");
+                                    var output5 = document.getElementById("demo5");
+                                    output5.innerHTML = slider5
+                                        .value; // Display the default slider value
+
+                                    // Update the current slider value (each time you drag the slider handle)
+                                    slider5.oninput = function () {
+                                        output5.innerHTML = this.value;
+                                    }
+                                </script>
+                                <br><br><br>
+                                <div class="slidecontainer" id="actioN">
+                                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="right"
+                                        data-html="true" title="
+                                            1. Displays an ongoing commitment to learning and self-improvement.<br> 
+                                            2. Participation in conferences/Conducting Trainings<br>
+                                            3. Source of learning new techniques or methods.">
+                                        <b>N</b>ew Learning<input type="range" min="1" max="10" value="6" class="slider"
+                                            id="myRange6" name="actioN"></a><span id="demo6"></span>/10
+                                </div>
+                                <script>
+                                    var slider6 = document.getElementById("myRange6");
+                                    var output6 = document.getElementById("demo6");
+                                    output6.innerHTML = slider6
+                                        .value; // Display the default slider value
+
+                                    // Update the current slider value (each time you drag the slider handle)
+                                    slider6.oninput = function () {
+                                        output6.innerHTML = this.value;
+                                    }
+                                </script>
+                                <br><br><br>
+                                <br><br>
+                            </fieldset>
+                            <label>Overall Supervisor Comments</label>
+                            <textarea name="field6"
+                                placeholder="Write about achievements and areas of improvement"></textarea>
+                            <fieldset>
+                                <legend><span class="number">3</span> Comments</legend>
+                                <textarea name="field7" placeholder="Additional Feedback (if any)"></textarea>
+                            </fieldset>
+                            <input id="closemodal" type="submit" value="Submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-account" role="dialog" tabindex="-1" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+        style="position : fixed; margin : 0; width : auto; height : 100%; top:0; background : rgba(255,255,255,50%);">
+        <div class="modal-dialog" role="document">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title"><b>Add Task</b></h2>
+                    <button type="button" class="close four-button" data-dismiss="modal" style="right:0;">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-style">
+                        <form id="ADDTASK">
+                            <fieldset>
+                                
+                                <legend><span class="number">1</span>Details of the Task</legend>
+                                Description of the task to be given<br><br><br>
+                            </fieldset>
+                            <label>Task Name</label>
+                            <input type="text" name="addTask" id="inputTaskName" placeholder="Name the Task">
+                            <label>Description of the Task</label>
+                            <textarea name="taskDesc" placeholder="Write a description describing the task"></textarea>
+                            <input id="closeModal" type="submit" value="Submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-account-details" role="dialog" tabindex="-1" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+        style="position : fixed; margin : 0; width : auto; height : 100%; top:0; background : rgba(255,255,255,50%);">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title"><b>Account Details</b></h2>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-style">
+                        <div class="account-details" align="center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="split-left left">
+            <div class="centered">
+                <div id="showSupName" class="employee-name-heading"></div>
+                <div class="designation">Supervisor</div>
+                <button type="submit" id="view-profile" class="btn btn-info four-button" data-toggle="modal"
+                    data-target="#modal-account-details">View Profile</button>
+                <br><br><br><br>
+                <button class="btn-info logout-button" id="log-out" onclick="logout()">Logout</button>
+            </div><br><br><br><br>
+            <div id="empList2">
+
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+
+                    var modals = document.querySelectorAll('.modal');
+                    M.Modal.init(modals);
+
+                });
+            </script>
+        </div>
+
+        <div class="split-right right">
+            <nav role="navigation">
+                <div id="menuToggle">
+
+                    <input type="checkbox" />
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul id="menu">
+                        <div class="centered">
+                            <div id="showSupName2" class="employee-name-heading"></div>
+                            <a href="#" class="designation modal-trigger" data-target="modal-account-details"
+                                style="color : #E54363;">View Profile</a>
+                            <div class="designation">Supervisor</div><br><br><br><br>
+                            <button class="btn btn-info logout-button" id="log-out" onclick="logout()">Logout</button>
+                        </div><br><br><br><br><br>
+                        <div id="empList">
+
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+
+                                var modals = document.querySelectorAll('.modal');
+                                M.Modal.init(modals);
+
+                            });
+                        </script>
+
+                    </ul>
+            </nav>
+            <div class="tabs-centered">
+                <button id="nn-btn" class="tab" onclick="openTab(event, 'notification-area')">NOTIFICATIONS</button>
+                <button id="lb-btn" class="tab" onclick="openTab(event, 'leaderboard-area')">LEADERBOARD</button>
+            </div>
+            <br>
+            <div class="tab-panels">
+                <div id="notification-area" class="center-area">
+                    <div class="long-widget-area">
+                        <b class="nf-head">Feedback Graded</b><span class="nf-content"> Please check out the
+                            latest
+                            feedback. The details are attached below.</span>
+                        <button type="submit" class="btn btn-info four-button" data-toggle="modal"
+                            data-target="#myModal">Give
+                            Feedback</button>
+                    </div>
+                </div>
+                <div id="leaderboard-area" class="center-area">
+
+                </div>
+                <script>
+                    function openTab(evt, cityName) {
+                        var i, tabcontent, tablinks;
+                        tabcontent = document.getElementsByClassName("center-area");
+                        for (i = 0; i < tabcontent.length; i++) {
+                            tabcontent[i].style.display = "none";
+                        }
+                        tablinks = document.getElementsByClassName("tab");
+                        for (i = 0; i < tablinks.length; i++) {
+                            tablinks[i].className = tablinks[i].className.replace(" active", "");
+                        }
+                        document.getElementById(cityName).style.display = "block";
+                        evt.currentTarget.className += " active";
+                    }
+                    openTab(event, 'leaderboard-area');
+                    document.getElementById("db-btn").click();
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDH0kF0XmB_D-lDrjS8m8xgiZ7544_fzeQ",
+            authDomain: "epfm-ym61.firebaseapp.com",
+            databaseURL: "https://epfm-ym61.firebaseio.com",
+            projectId: "epfm-ym61",
+            storageBucket: "",
+            messagingSenderId: "111715556404",
+            appId: "1:111715556404:web:10332ac046ef434f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        // const functions = firebase.functions();
+    </script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/logSign.js"></script>
+    <script src="scripts/addtask2.js"></script>
+    <script src="scripts/superNotif2.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('modal-account-details');
+
+        // // When the user clicks anywhere outside of the modal, close it
+        // window.onclick = function(event) {
+        //     if (event.target == modal) {
+        //     modal.style.display = "none";
+        //     }
+        // }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#closemodal').click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#closeModal').click(function () {
+                $('#modal-account').modal('hide');
+            });
+        });
+    </script>
+</body>
+
+</html>

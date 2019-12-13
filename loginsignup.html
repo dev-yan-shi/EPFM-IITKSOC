@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="css/login-style.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+        <title>Login Page</title>
+    </head>
+    <body>
+        <div>
+        <div class = "split-left left">
+        <div class = "welcome-touch">Touch</div><div class="welcome-text">A complete EPFM solution</div><br><br>
+        <h6 class = "home-page-intro"><p>
+        Touch is an employee performance feedback management system developed by the students of IIT Kanpur in the Summer of Code 2.0 for MSI. Medallion Social Innovators (MSI) India Pvt. Ltd is a social enterprise based out of Bengaluru, India. Since their inception in 2007, team MSI have
+been working with various non-profit as well as government programs across different States to help
+improve the healthcare access to marginalised communities. <span id="dots">...</span><span id="more-text">MSI’s open strategy involves identifying
+committed healthcare partners and build essential medical capabilities, while at the same time
+remain financially sustainable. The core areas we bring the desired change, would ne in areas of<br><br>1.
+Management consulting <br>2. Technology Innovation<br>3. Preventive community-based interventions.<br><br>
+Team MSI brings over 50 years of collective experience from across medical field, social
+entrepreneurship and technology experts.<br><br>
+<b style="font-size : 35px;">Why organisations need to adopt the Touch application?</b><br><br>
+Having worked with hospitals (small, mid-sized and large organizations), it is quite evident that the
+key stake holders face an acute shortage of medical professionals and even if they been able to
+attract the right candidate, the problem remains with regards to motivating and retaining them.
+Appraisal mechanism are far too redundant or even non-existent in these settings.
+MSI team in partnership with IIT Kanpur (Summer of Code 2019) bring forth Touch an easy to
+use application that would not only automate the entire appraisal mechanism, but also brings a
+transparent mechanism for measuring work deliverables.
+The application also brings Supervisors closer to working with team members and more importantly
+gives them almost instant feedback on task assigned.</span></p></h6><br><button class="btn btn-info" onclick="read_more_function()" id="myBtn">Read more</button><br><br><br>
+        </div>
+        <div class="split-right right">
+        <div class="centered">
+        <div class = "welcome-touch hidden">Touch</div><div class="welcome-text hidden">A complete EPFM solution</div><br><br><br>
+            <form class="login-form normal">
+                <input class="normal" type="text" id="login-email" placeholder="User Id"><br>
+                <input class="normal" style="color : #444444;" type="password" id="login-password" placeholder="Password"><br>
+                <p class="error pink-text center-align"></p>
+                <button class="btn z-depth-0">Login</button><br><br><br><br><br><br><br><br>
+                <p><h6 class="normal">New employee?</h6> <div class="normal" style="color : #E54363; cursor:pointer;" onclick="signup()">Create Account</div></p>
+            </form>
+            <form class="signup-form normal" style = "display : none;">
+                <input class="normal" type="email" id="signup-email" placeholder="Enter email ID"/><br>
+                <input class="normal" type="text" id="employee-id" placeholder="Enter Employee ID"/><br>
+                <input class="normal" type="password" id="signup-password" placeholder="Enter Password"><br>
+                <input class="normal" type="password" id="signup-password-check" placeholder="Re-enter your Password"><br>
+                <p class="error pink-text center-align"></p>
+                <button class="btn z-depth-0">Sign Up</button><br><br><br><br><br><br><br><br>
+                <p><h6 class="normal">Already Registered?</h6> <span class="normal" style="color : #E54363; cursor:pointer;" onclick="login()">Click here to Login</span></p>
+            </form>
+        </div>
+        </div>
+        </div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDH0kF0XmB_D-lDrjS8m8xgiZ7544_fzeQ",
+            authDomain: "epfm-ym61.firebaseapp.com",
+            databaseURL: "https://epfm-ym61.firebaseio.com",
+            projectId: "epfm-ym61",
+            storageBucket: "",
+            messagingSenderId: "111715556404",
+            appId: "1:111715556404:web:10332ac046ef434f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const db1 = firebase.database();
+        // const functions = firebase.functions();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/logSign.js"></script>
+    </body>
+</html>

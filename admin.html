@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>Admin Page</title>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/dropdowns.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <div>
+        <div class="split-left left">
+            <div class="centered">
+                <h3 class="employee-name">Yash Maheshwari</h3>
+                <h5 style="color:#E54363;">Administrator</h5><br><br><br>
+                <button class="btn btn-info logout-button" style="background-color:#E54363;" id="log-out" onclick="logout()">Logout</button><br><br><br><br>
+            </div>
+        </div>
+        <div class="split-right right">
+        <form class="add-form">
+            <h3>Add User</h3>
+            <input class="normal" type="text" id="add-name" placeholder="Enter name"/><br>
+            <input class="normal" type="text" id="eid" placeholder="Enter ID"/><br>
+            <input class="normal" type="text" id="desig" placeholder="Enter Designation"/><br>
+            <p><label>
+            <input class="normal" type="radio" name="emptype" style="color:#E54363;" value="Employee" id="emp"> <span style="color:#E54363;">Employee</span><br>
+            </label></p>
+            <p><label>
+            <input class="normal" type="radio" name="emptype" value="Supervisor" id="sup"/> <span style="color:#E54363;">Supervisor</span><br>
+            </label></p>
+            <div class="text">
+                <h4>Enter Supervisor Details</h4>
+                <input class="normal" type="text" id="supname" placeholder="Enter name"/><br>
+                <input class="normal" type="text" id="supeid" placeholder="Enter ID"/><br>
+            </div><br>
+            <input class="btn" style="background-color:#E54363;" type="submit" value="Add">
+            <h4 class="error" style="color:#E54363;"></h4>
+        </form>
+        <form class="del-form">
+            <h3>Remove User</h3>
+            <input class="normal" type="text" id="remove-name" placeholder="Enter name" onclick="myFunction()" id="myInput" onkeyup="filterFunction()"/>
+            <br>
+            <input class="normal" type="text" id="eid" placeholder="Enter ID"/><br>
+            <p><label>
+            <input class="normal" type="radio" name="emptype" id="empd" value="Employee"> <span style="color:#E54363;">Employee</span><br>
+            </label></p>
+            <p><label>
+            <input class="normal" type="radio" name="emptype" id="supd" value="Supervisor"><span style="color:#E54363;">Supervisor</span><br>
+            </label></p>
+            <div class="textd">
+                <h4>Enter Supervisor Details</h4>
+                <input class="normal" type="text" id="supname" placeholder="Enter name"/><br>
+                <input class="normal" type="text" id="supeid" placeholder="Enter ID"/><br>
+            </div><br>
+            <input class="btn" style="background-color:#E54363;" type="submit" value="Remove">
+            <h4 class="error" style="color:#E54363;"></h4>
+        </form>
+        <form class="trans-form">
+                <h3>Transfer Employee</h3>
+                <input class="normal" type="text" id="transfer-name" placeholder="Enter name"/><br>
+                <input class="normal" type="text" id="eid" placeholder="Enter ID"/><br>
+                <h4>Enter Old Supervisor Details</h4>
+                <input class="normal" type="text" id="oldname" placeholder="Enter name"/><br>
+                <input class="normal" type="text" id="oldeid" placeholder="Enter ID"/><br>
+                <h4>Enter New Supervisor Details</h4>
+                <input class="normal" type="text" id="newname" placeholder="Enter name"/><br>
+                <input class="normal" type="text" id="neweid" placeholder="Enter ID"/><br>
+                <input class="btn" style="background-color:#E54363;" type="submit" value="Add">
+                <h4 class="error" style="color:#E54363;"></h4>
+        </form>
+        <form class="up-form">
+                <h3>Promote Employee</h3>
+                <input class="normal" type="text" id="promote-name" placeholder="Enter name"/><br>
+                <input class="normal" type="text" id="eid" placeholder="Enter ID"/><br>
+                <input class="normal" type="text" id="supeid" placeholder="Enter Supervisor ID"/><br>
+                <h4>Enter New Details</h4>
+                <input class="normal" type="text" id="neweid" placeholder="Enter ID"/><br>
+                <input class="normal" type="text" id="newdes" placeholder="Enter Designation"/><br>
+                <h4>Promote employee to Supervisor?</h4>
+                <p><label><p><label>
+                <input type="radio" name="type" id="yes" value="yes"><span style="color:#E54363;">Yes</span></label></p>
+                <p><label>
+                <input type="radio" name="type" id="no" value="no"><span style="color:#E54363;">No</span></label></p><br>
+                <div class="textu">
+                    <h4>Enter New Supervisor Details</h4>
+                    <input class="normal" type="text" id="supname" placeholder="Enter Supervisor name"/><br>
+                    <input class="normal"type="text" id="newsupeid" placeholder="Enter Supervisor ID"/><br>
+                </div><br>
+                <input class="btn" style="background-color:#E54363;" type="submit" value="Add">
+                <h4 class="error" style="color:#E54363;"></h4>
+        </form>
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDH0kF0XmB_D-lDrjS8m8xgiZ7544_fzeQ",
+            authDomain: "epfm-ym61.firebaseapp.com",
+            databaseURL: "https://epfm-ym61.firebaseio.com",
+            projectId: "epfm-ym61",
+            storageBucket: "",
+            messagingSenderId: "111715556404",
+            appId: "1:111715556404:web:10332ac046ef434f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const functions = firebase.functions();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/admin.js"></script>
+        <script src="scripts/logSign.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".text").hide();
+                $(".textd").hide();
+                $(".textu").hide();
+                $("#emp").click(function () {
+                    $(".text").show();
+                });
+                $("#sup").click(function () {
+                    $(".text").hide();
+                });
+                $("#empd").click(function () {
+                    $(".textd").show();
+                });
+                $("#supd").click(function () {
+                    $(".textd").hide();
+                });
+                $("#no").click(function () {
+                    $(".textu").show();
+                });
+                $("#yes").click(function () {
+                    $(".textu").hide();
+                });
+
+            });
+        </script>
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+        </div>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>
