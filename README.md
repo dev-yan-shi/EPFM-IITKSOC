@@ -1,4 +1,4 @@
-# Touch-a complete EPFM solution
+# TOUCH: A complete EPFM solution
 Touch is an employee performance feedback management system developed by the students of IIT Kanpur in the Summer of Code 2.0 for MSI. Medallion Social Innovators (MSI) India Pvt. Ltd is a social enterprise based out of Bengaluru, India. Since their inception in 2007, team MSI have been working with various non-profit as well as government programs across different States to help improve the healthcare access to marginalised communities.
 
 Technologies incorporated in development of this project are:</br>
